@@ -1,4 +1,4 @@
-package interfaz;
+package interfaz.componentes;
 
 import java.awt.Graphics;
 import java.awt.Image;
@@ -6,7 +6,7 @@ import java.awt.Toolkit;
 
 import javax.swing.JPanel;
 
-public class Fondo extends JPanel{
+public class Fondo extends JPanel {
 	/**
 	 *
 	 */
@@ -14,11 +14,11 @@ public class Fondo extends JPanel{
 	Image imagen;
 
 	public Fondo() {
-		imagen=Toolkit.getDefaultToolkit().getImage("imagenes/fondo.png");
+		imagen = Toolkit.getDefaultToolkit().getImage("imagenes/fondo.png");
 	}
 
 	@Override
-	public void paintComponent(Graphics g){
+	public void paintComponent(Graphics g) {
 		g.drawImage(imagen, 0, 0, this);
 	}
 
