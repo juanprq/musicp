@@ -4,6 +4,7 @@ import interfaz.componentes.BotonApagar;
 import interfaz.componentes.BotonMinimizar;
 import interfaz.componentes.Brillo;
 import interfaz.componentes.Fondo;
+import interfaz.componentes.PanelReproduccion;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -14,6 +15,7 @@ import java.awt.event.MouseMotionAdapter;
 import javax.swing.JButton;
 import javax.swing.JComponent;
 import javax.swing.JFrame;
+import javax.swing.JLayeredPane;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
@@ -27,6 +29,7 @@ public class Ventana extends JFrame {
 	private JButton apagar;
 	private JButton minimizar;
 	private JComponent brillo;
+	private JPanel reproductor;
 	// variables para el drag&drop
 	private int xi;
 	private int yi;
@@ -75,6 +78,8 @@ public class Ventana extends JFrame {
 	}
 
 	private void iniciarComponentes() {
+		JLayeredPane lp=this.getLayeredPane();
+
 		fondo = new Fondo();
 		fondo.setLayout(null);
 		fondo.setBounds(7, 15, 526, 314);
@@ -94,6 +99,9 @@ public class Ventana extends JFrame {
 		this.setGlassPane(brillo);
 		this.getGlassPane().setVisible(true);
 
+		reproductor=new PanelReproduccion();
+		reproductor.setBounds(139, 225, 271, 73);
+		lp.add(reproductor, new Integer(2));
 	}
 
 	// **************eventos********************
