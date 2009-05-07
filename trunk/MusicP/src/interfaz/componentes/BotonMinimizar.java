@@ -40,7 +40,7 @@ public class BotonMinimizar extends JButton {
 		setBorderPainted(false);
 		this.setToolTipText("Minimizar");
 		setForeground(Color.WHITE);
-		background = new Color(0x333333).darker();
+		background = new Color(0x333333).darker().darker().darker();
 		shineColor = Color.WHITE;
 	}
 

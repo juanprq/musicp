@@ -93,7 +93,7 @@ public class BotonApagar extends JButton {
 
 	private Shape construirBrillo() {
 		Shape brillo=boton;
-		Shape corte=new Ellipse2D.Float(-8, -9, 68, 50);
+		Shape corte=new Ellipse2D.Float(-8, -8, 68, 50);
 
 		Area a1=new Area(brillo);
 		Area a2=new Area(corte);
@@ -103,7 +103,7 @@ public class BotonApagar extends JButton {
 	}
 
 	private Shape construirCuadrado() {
-		Shape cuadrado = new RoundRectangle2D.Float(14, 14, 26, 26, 118, 118);
+		Shape cuadrado = new RoundRectangle2D.Float(14, 14, 26, 26, 18, 18);
 
 		return cuadrado;
 	}
