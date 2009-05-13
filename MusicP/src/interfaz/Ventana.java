@@ -4,8 +4,10 @@ import interfaz.componentes.BotonApagar;
 import interfaz.componentes.BotonMinimizar;
 import interfaz.componentes.Brillo;
 import interfaz.componentes.Fondo;
+import interfaz.componentes.FondoFalso;
 import interfaz.componentes.PanelReproduccion;
 
+import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
@@ -30,9 +32,11 @@ public class Ventana extends JFrame {
 	private JButton minimizar;
 	private JComponent brillo;
 	private JPanel reproductor;
+	private JPanel pantalla;
 	// variables para el drag&drop
 	private int xi;
 	private int yi;
+	private FondoFalso fondoFalso;
 
 	public Ventana() {
 		super("Hamilpod");
@@ -78,7 +82,7 @@ public class Ventana extends JFrame {
 	}
 
 	private void iniciarComponentes() {
-		JLayeredPane lp=this.getLayeredPane();
+		JLayeredPane lp = this.getLayeredPane();
 
 		fondo = new Fondo();
 		fondo.setLayout(null);
@@ -99,9 +103,18 @@ public class Ventana extends JFrame {
 		this.setGlassPane(brillo);
 		this.getGlassPane().setVisible(true);
 
-		reproductor=new PanelReproduccion();
-		reproductor.setBounds(139, 225, 271, 73);
+		reproductor = new PanelReproduccion();
+		reproductor.setBounds(139, 227, 291, 73);
 		lp.add(reproductor, new Integer(2));
+
+		fondoFalso=new FondoFalso();
+		fondoFalso.setBounds(110, 299, 319, 32);
+		lp.add(fondoFalso, new Integer(3));
+
+		pantalla = new JPanel();
+		pantalla.setLayout(new BorderLayout());
+		pantalla.setBounds(97, 28, 332, 255);
+		fondo.add(pantalla);
 	}
 
 	// **************eventos********************

@@ -20,8 +20,8 @@ public class Brillo extends JComponent {
 	private Color c2;
 
 	public Brillo() {
-		c1=new Color(0.255f, 0.255f, 0.255f, 0.8f);
-		c2=new Color(0.255f, 0.255f, 0.255f, 0.0f);
+		c1=new Color(255, 255, 255, 80);
+		c2=new Color(255, 255, 255, 0);
 	}
 
 	public void paintComponent(Graphics g) {
