@@ -1,4 +1,4 @@
-package interfaz.componentes;
+package interfaz.componentes.panelReproductor;
 
 import java.awt.Graphics;
 import java.awt.Image;

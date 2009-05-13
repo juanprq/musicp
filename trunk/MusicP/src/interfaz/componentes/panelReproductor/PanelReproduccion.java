@@ -1,4 +1,4 @@
-package interfaz.componentes;
+package interfaz.componentes.panelReproductor;
 
 import java.awt.AlphaComposite;
 import java.awt.BasicStroke;
@@ -7,13 +7,17 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
 import java.awt.Shape;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.geom.Rectangle2D;
 import java.awt.geom.RoundRectangle2D;
 import java.awt.image.BufferedImage;
 import java.awt.image.ConvolveOp;
 import java.awt.image.Kernel;
 
+import javax.swing.JButton;
 import javax.swing.JPanel;
+import javax.swing.Timer;
 
 public class PanelReproduccion extends JPanel {
 
@@ -23,16 +27,64 @@ public class PanelReproduccion extends JPanel {
 	private static final long serialVersionUID = 1L;
 	private Shape cuadrado;
 	private BufferedImage sombra;
+	private JButton botonMinimizar;
+	private boolean visible = true;
+	private Timer temp;
+	private final int velocidad = 3;
 
 	public PanelReproduccion() {
+		this.setLayout(null);
 		cuadrado = construirCuadrado();
 		sombra = construirSombra();
+		inicializarComponentes();
+	}
+
+	private void inicializarComponentes() {
+		botonMinimizar = new BotonMinimizar();
+		botonMinimizar.setText("_");
+		botonMinimizar.setBounds(239, 1, 15, 15);
+		this.add(botonMinimizar);
+
+		temp = new Timer(63, new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				animar();
+			}
+		});
+
+		botonMinimizar.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				empezarAnimacion();
+			}
+		});
+	}
+
+	protected void animar() {
+		int x = (int) this.getLocation().getX();
+		int y = (int) this.getLocation().getY();
+		if (visible) {
+			y += velocidad;
+		} else {
+			y -= velocidad;
+		}
+		this.setLocation(x, y);
+		if (y <= 227 || y >= 283) {
+			temp.stop();
+			visible = !visible;
+		}
+	}
+
+	protected void empezarAnimacion() {
+		temp.start();
 	}
 
 	private BufferedImage construirSombra() {
 		Rectangle2D b = cuadrado.getBounds2D();
-		BufferedImage sombra = new BufferedImage((int) b.getWidth()+20, (int) b
-				.getHeight()+30, BufferedImage.TYPE_INT_ARGB);
+		BufferedImage sombra = new BufferedImage((int) b.getWidth() + 20,
+				(int) b.getHeight() + 30, BufferedImage.TYPE_INT_ARGB);
 		Graphics2D g2 = sombra.createGraphics();
 
 		g2.setComposite(AlphaComposite.SrcOver.derive(0.5f));
@@ -57,15 +109,15 @@ public class PanelReproduccion extends JPanel {
 		g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
 				RenderingHints.VALUE_ANTIALIAS_ON);
 
-//		Composite oldComposite = g2.getComposite();
-//
-//		g2.setComposite(AlphaComposite.SrcOver.derive(0.5f));
-//		g2.setColor(Color.darkGray);
-//		g2.translate(6, 6);
-//		g2.fill(cuadrado);
-//
-//		g2.setComposite(oldComposite);
-//		g2.translate(-6, -6);
+		// Composite oldComposite = g2.getComposite();
+		//
+		// g2.setComposite(AlphaComposite.SrcOver.derive(0.5f));
+		// g2.setColor(Color.darkGray);
+		// g2.translate(6, 6);
+		// g2.fill(cuadrado);
+		//
+		// g2.setComposite(oldComposite);
+		// g2.translate(-6, -6);
 
 		g2.drawImage(sombra, null, this);
 

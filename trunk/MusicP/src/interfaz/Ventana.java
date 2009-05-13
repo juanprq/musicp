@@ -4,8 +4,8 @@ import interfaz.componentes.BotonApagar;
 import interfaz.componentes.BotonMinimizar;
 import interfaz.componentes.Brillo;
 import interfaz.componentes.Fondo;
-import interfaz.componentes.FondoFalso;
-import interfaz.componentes.PanelReproduccion;
+import interfaz.componentes.panelReproductor.FondoFalso;
+import interfaz.componentes.panelReproductor.PanelReproduccion;
 
 import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
@@ -108,7 +108,7 @@ public class Ventana extends JFrame {
 		lp.add(reproductor, new Integer(2));
 
 		fondoFalso=new FondoFalso();
-		fondoFalso.setBounds(110, 299, 319, 32);
+		fondoFalso.setBounds(112, 299, 319, 32);
 		lp.add(fondoFalso, new Integer(3));
 
 		pantalla = new JPanel();
