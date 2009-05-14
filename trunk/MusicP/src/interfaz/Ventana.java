@@ -7,6 +7,7 @@ import interfaz.componentes.Fondo;
 import interfaz.componentes.panelReproductor.BotonPlay;
 import interfaz.componentes.panelReproductor.BotonSiguiente;
 import interfaz.componentes.panelReproductor.BotonStop;
+import interfaz.componentes.panelReproductor.BotonVolumen;
 import interfaz.componentes.panelReproductor.FondoFalso;
 import interfaz.componentes.panelReproductor.PanelReproduccion;
 import interfaz.componentes.panelReproductor.slider.Slider;
@@ -46,6 +47,7 @@ public class Ventana extends JFrame {
 	private BotonSiguiente BotonAtras;
 	private BotonStop botonStop;
 	private Slider slider;
+	private BotonVolumen botonVolumen;
 
 	public Ventana() {
 		super("Hamilpod");
@@ -154,6 +156,10 @@ public class Ventana extends JFrame {
 		botonStop=new BotonStop();
 		botonStop.setBounds(43, 6, 22, 22);
 		reproductor.add(botonStop);
+
+		botonVolumen=new BotonVolumen();
+		botonVolumen.setBounds(209, 6, 22, 22);
+		reproductor.add(botonVolumen);
 
 		slider=new Slider();
 		slider.setBounds(12, 46, 241, 10);
