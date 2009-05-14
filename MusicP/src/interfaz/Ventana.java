@@ -39,9 +39,6 @@ public class Ventana extends JFrame {
 	private JComponent brillo;
 	private JPanel reproductor;
 	private JPanel pantalla;
-	// variables para el drag&drop
-	private int xi;
-	private int yi;
 	private FondoFalso fondoFalso;
 	private BotonPlay botonPlay;
 	private BotonSiguiente botonSiguiente;
@@ -50,6 +47,9 @@ public class Ventana extends JFrame {
 	private Slider slider;
 	private BotonVolumen botonVolumen;
 	private PanelVolumen pv;
+	// variables para el drag&drop
+	private int xi;
+	private int yi;
 
 	public Ventana() {
 		super("Hamilpod");
