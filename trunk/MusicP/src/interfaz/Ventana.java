@@ -4,6 +4,8 @@ import interfaz.componentes.BotonApagar;
 import interfaz.componentes.BotonMinimizar;
 import interfaz.componentes.Brillo;
 import interfaz.componentes.Fondo;
+import interfaz.componentes.panelReproductor.BotonPlay;
+import interfaz.componentes.panelReproductor.BotonSiguiente;
 import interfaz.componentes.panelReproductor.FondoFalso;
 import interfaz.componentes.panelReproductor.PanelReproduccion;
 
@@ -37,6 +39,9 @@ public class Ventana extends JFrame {
 	private int xi;
 	private int yi;
 	private FondoFalso fondoFalso;
+	private BotonPlay botonPlay;
+	private BotonSiguiente botonSiguiente;
+	private BotonSiguiente BotonAtras;
 
 	public Ventana() {
 		super("Hamilpod");
@@ -46,7 +51,17 @@ public class Ventana extends JFrame {
 		this.setLayout(null);
 		this.setLocationRelativeTo(null);
 		iniciarComponentes();
+		agregarEventos();
 		ponerArrastrable();
+	}
+
+	private void agregarEventos() {
+		botonPlay.addActionListener(new ActionListener(){
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				botonPlay.reproducir();
+			}});
 	}
 
 	private void ponerArrastrable() {
@@ -103,14 +118,27 @@ public class Ventana extends JFrame {
 		this.setGlassPane(brillo);
 		this.getGlassPane().setVisible(true);
 
+		/*todo lo del panel de reproduccion*/
 		reproductor = new PanelReproduccion();
 		reproductor.setBounds(139, 227, 291, 73);
 		lp.add(reproductor, new Integer(2));
 
-		fondoFalso=new FondoFalso();
-		fondoFalso.setBounds(112, 299, 319, 32);
-		lp.add(fondoFalso, new Integer(3));
+		botonPlay=new BotonPlay();
+		botonPlay.setBounds(127, 6, 22, 22);
+		reproductor.add(botonPlay);
 
+		botonSiguiente=new BotonSiguiente(BotonSiguiente.ADELANTAR);
+		botonSiguiente.setBounds(167, 6, 22, 22);
+		reproductor.add(botonSiguiente);
+
+		BotonAtras=new BotonSiguiente(BotonSiguiente.ATRASAR);
+		BotonAtras.setBounds(85, 6, 22, 22);
+		reproductor.add(BotonAtras);
+
+		fondoFalso=new FondoFalso();
+		fondoFalso.setBounds(112, 299, 319, 33);
+		lp.add(fondoFalso, new Integer(3));
+		/*Fin componentes del panel de reproduccion*/
 		pantalla = new JPanel();
 		pantalla.setLayout(new BorderLayout());
 		pantalla.setBounds(97, 28, 332, 255);

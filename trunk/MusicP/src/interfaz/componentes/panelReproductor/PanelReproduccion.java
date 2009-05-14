@@ -42,7 +42,7 @@ public class PanelReproduccion extends JPanel {
 	private void inicializarComponentes() {
 		botonMinimizar = new BotonMinimizar();
 		botonMinimizar.setText("_");
-		botonMinimizar.setBounds(239, 1, 15, 15);
+		botonMinimizar.setBounds(239, 1, 12, 12);
 		this.add(botonMinimizar);
 
 		temp = new Timer(63, new ActionListener() {
@@ -71,7 +71,7 @@ public class PanelReproduccion extends JPanel {
 			y -= velocidad;
 		}
 		this.setLocation(x, y);
-		if (y <= 227 || y >= 283) {
+		if (y <= 227 || y >= 287) {
 			temp.stop();
 			visible = !visible;
 		}
