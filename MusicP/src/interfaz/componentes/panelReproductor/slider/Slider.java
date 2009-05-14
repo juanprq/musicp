@@ -44,7 +44,7 @@ public class Slider extends JPanel {
 		gradiente1 = new GradientPaint(0, this.getHeight() / 2 - 2,
 				Color.DARK_GRAY, 0, this.getHeight() + 2, Color.WHITE);
 		gradiente2 = new GradientPaint(0, this.getHeight() / 2 - 2, Color.BLUE
-				.darker(), 0, this.getHeight() + 2, Color.LIGHT_GRAY);
+				.brighter().brighter().brighter(), 0, this.getHeight() + 2, Color.LIGHT_GRAY);
 
 		ponerBotonDragable();
 	}
