@@ -20,6 +20,7 @@ public class BotonPlay extends JButton {
 	private Shape pause1;
 	private Shape pause2;
 	private boolean reproduciendo = false;
+	private boolean mouseIn=false;
 
 	public BotonPlay() {
 		this.setOpaque(false);
@@ -28,16 +29,29 @@ public class BotonPlay extends JButton {
 	}
 
 	private void iniciarShapes() {
-		int[] xP = new int[] { 5, 5, 20 };
-		int[] yP = new int[] { 2, 20, 11 };
-		play = new Polygon(xP, yP, 3);
-
-		pause1 = new Rectangle2D.Float(6, 2, 3, 18);
-		pause2 = new Rectangle2D.Float(14, 2, 3, 18);
+		if(mouseIn){
+			int[] xP = new int[] { 3, 3, 22 };
+			int[] yP = new int[] { 0, 22, 12 };
+			
+			play = new Polygon(xP, yP, 3);
+	
+			pause1 = new Rectangle2D.Float(3, 0, 5, 22);
+			pause2 = new Rectangle2D.Float(14, 0, 5, 22);
+			
+		} else {
+			int[] xP = new int[] { 5, 5, 20 };
+			int[] yP = new int[] { 2, 20, 11 };
+			
+			play = new Polygon(xP, yP, 3);
+	
+			pause1 = new Rectangle2D.Float(6, 2, 3, 18);
+			pause2 = new Rectangle2D.Float(14, 2, 3, 18);
+		}
 	}
 
 	@Override
 	public void paintComponent(Graphics g) {
+		iniciarShapes();
 		Graphics2D g2 = (Graphics2D) g;
 		g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
 				RenderingHints.VALUE_ANTIALIAS_ON);
@@ -53,6 +67,15 @@ public class BotonPlay extends JButton {
 
 	public void reproducir() {
 		reproduciendo=!reproduciendo;
+	}
+	
+	public void mouseEntered(){
+		mouseIn=true;
+		repaint();
+	}
+	public void mouseExited(){
+		mouseIn=false;
+		repaint();
 	}
 
 }

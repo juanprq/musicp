@@ -62,6 +62,18 @@ public class Ventana extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				botonPlay.reproducir();
 			}});
+		botonPlay.addMouseListener(new java.awt.event.MouseAdapter() {
+
+            @Override
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                botonPlay.mouseEntered();
+            }
+
+            @Override
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                botonPlay.mouseExited();
+            }
+        });
 	}
 
 	private void ponerArrastrable() {
