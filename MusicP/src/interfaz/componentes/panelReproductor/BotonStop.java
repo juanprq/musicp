@@ -19,7 +19,7 @@ public class BotonStop extends JButton {
 	public BotonStop() {
 		this.setOpaque(false);
 		this.setToolTipText("Parar");
-		cuadrado = new RoundRectangle2D.Float(0, 0, 19, 19, 40, 40);
+		cuadrado = new RoundRectangle2D.Float(2, 2, 18, 18, 5, 5);
 	}
 
 	public void paintComponent(Graphics g) {
