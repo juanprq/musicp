@@ -30,7 +30,7 @@ public class PanelReproduccion extends JPanel {
 	private JButton botonMinimizar;
 	private boolean visible = true;
 	private Timer temp;
-	private final int velocidad = 3;
+	private final int velocidad = 1;
 
 	public PanelReproduccion() {
 		this.setLayout(null);
@@ -45,7 +45,7 @@ public class PanelReproduccion extends JPanel {
 		botonMinimizar.setBounds(239, 1, 12, 12);
 		this.add(botonMinimizar);
 
-		temp = new Timer(63, new ActionListener() {
+		temp = new Timer(20, new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
