@@ -77,18 +77,18 @@ public class BotonMinimizar extends JButton {
 		g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
 				RenderingHints.VALUE_ANTIALIAS_ON);
 		ButtonModel bModel = getModel();
-		g2.setComposite(AlphaComposite.SrcOver.derive(0.3f));
+		g2.setComposite(AlphaComposite.SrcOver.derive(0.15f));
 
 		RoundRectangle2D boton = new RoundRectangle2D.Float(0, 0, getWidth(),
 				getHeight(), xRoundness, yRoundness);
 
 		if (bModel.isArmed()) {
 			// cuando se oprimio
-			g2.setColor(background.darker());
+			g2.setColor(background.darker().darker().darker());
 		} else {
 			if (bModel.isRollover()) {
 				// cuando hay rollover
-				g2.setColor(background.brighter());
+				g2.setColor(background.brighter().brighter().brighter());
 			} else {
 				// al no estar haciendo nada
 				g2.setColor(background);
