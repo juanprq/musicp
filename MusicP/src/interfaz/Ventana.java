@@ -4,6 +4,8 @@ import interfaz.componentes.BotonApagar;
 import interfaz.componentes.BotonMinimizar;
 import interfaz.componentes.Brillo;
 import interfaz.componentes.Fondo;
+import interfaz.componentes.menuPrincipal.FondoFalso2;
+import interfaz.componentes.menuPrincipal.MenuPrincipal;
 import interfaz.componentes.panelReproductor.BotonPlay;
 import interfaz.componentes.panelReproductor.BotonSiguiente;
 import interfaz.componentes.panelReproductor.BotonStop;
@@ -12,6 +14,7 @@ import interfaz.componentes.panelReproductor.FondoFalso;
 import interfaz.componentes.panelReproductor.PanelReproduccion;
 import interfaz.componentes.panelReproductor.slider.Slider;
 import interfaz.componentes.panelReproductor.sliderVolumen.PanelVolumen;
+import interfaz.componentes.pantalla.pantallaReproduccion;
 
 import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
@@ -26,6 +29,8 @@ import javax.swing.JFrame;
 import javax.swing.JLayeredPane;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+
+import logica.Cancion;
 
 public class Ventana extends JFrame {
 
@@ -50,6 +55,9 @@ public class Ventana extends JFrame {
 	// variables para el drag&drop
 	private int xi;
 	private int yi;
+	private FondoFalso2 fondoFalso2;
+	private MenuPrincipal menuPrincipal;
+	private pantallaReproduccion pantallaReproduccion;
 
 	public Ventana() {
 		super("Hamilpod");
@@ -185,13 +193,42 @@ public class Ventana extends JFrame {
 		lp.add(pv, new Integer(3));
 
 		fondoFalso = new FondoFalso();
-		fondoFalso.setBounds(112, 299, 319, 33);
+		fondoFalso.setBounds(112, 298, 319, 34);
 		lp.add(fondoFalso, new Integer(3));
 		/* Fin componentes del panel de reproduccion */
+
+		/* Componentes Menu */
+
+		fondoFalso2 = new FondoFalso2();
+		fondoFalso2.setBounds(132, 15, 273, 29);
+		lp.add(fondoFalso2, new Integer(3));
+
+		/* Fin Componentes Menu */
+
+		/* Pantalla */
 		pantalla = new JPanel();
 		pantalla.setLayout(new BorderLayout());
-		pantalla.setBounds(97, 28, 332, 255);
+		pantalla.setBounds(97, 29, 332, 254);
 		fondo.add(pantalla);
+		pantallaReproduccion = new pantallaReproduccion();
+		/* prueba */
+		Cancion c = new Cancion();
+		c.setAlbum("Album 1");
+		c.setNombre("Canción de Prueba");
+		c.setMinutos(4);
+		c.setSegundos(30);
+		c.setUrlAlbum("imagenes/album1.jpg");
+		c.setCalificacion(4);
+		c.setComentarios("holaasdasd");
+		/* fin prueba */
+		pantalla.add(pantallaReproduccion, BorderLayout.CENTER);
+		pantallaReproduccion.setCancion(c);
+		pantallaReproduccion.comenzarCuenta();
+		/* fin pantalla */
+
+		menuPrincipal = new MenuPrincipal();
+		menuPrincipal.setBounds(139, 44, 266, 47);
+		lp.add(menuPrincipal, new Integer(2));
 	}
 
 	// **************eventos********************

@@ -43,6 +43,7 @@ public class PanelReproduccion extends JPanel {
 		botonMinimizar = new BotonMinimizar();
 		botonMinimizar.setText("_");
 		botonMinimizar.setBounds(239, 1, 12, 12);
+		botonMinimizar.setToolTipText("Ocultar panel de reproducción");
 		this.add(botonMinimizar);
 
 		temp = new Timer(20, new ActionListener() {
