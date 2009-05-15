@@ -20,7 +20,7 @@ public class FondoFalso extends JPanel{
 
 
 	public void paintComponent(Graphics g){
-		g.drawImage(imagen, -107, -284,this);
+		g.drawImage(imagen, -107, -283,this);
 	}
 
 }
