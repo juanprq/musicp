@@ -5,6 +5,7 @@ import interfaz.componentes.BotonMinimizar;
 import interfaz.componentes.Brillo;
 import interfaz.componentes.Fondo;
 import interfaz.componentes.ListaReproduccion.ListaReproduccion;
+import interfaz.componentes.albumChooser.AlbumChooser;
 import interfaz.componentes.menuPrincipal.FondoFalso2;
 import interfaz.componentes.menuPrincipal.MenuPrincipal;
 import interfaz.componentes.panelReproductor.BotonEsconder;
@@ -38,7 +39,7 @@ import logica.Cancion;
 public class Ventana extends JFrame {
 
 	/**
-	 * 
+	 *
 	 */
 	private static final long serialVersionUID = 1L;
 	private JPanel fondo;
@@ -138,8 +139,8 @@ public class Ventana extends JFrame {
 				botonPlay.mouseExited();
 			}
 		});
-		
-		
+
+
 		botonSiguiente.addActionListener(new ActionListener() {
 
 			@Override
@@ -159,7 +160,7 @@ public class Ventana extends JFrame {
 				botonSiguiente.mouseExited();
 			}
 		});
-		
+
 		BotonAtras.addActionListener(new ActionListener() {
 
 			@Override
@@ -179,7 +180,7 @@ public class Ventana extends JFrame {
 				BotonAtras.mouseExited();
 			}
 		});
-		
+
 		botonStop.addActionListener(new ActionListener() {
 
 			@Override
@@ -348,7 +349,10 @@ public class Ventana extends JFrame {
 		}
 		listaReproduccion.setListaCanciones(z);
 		/* fin prueba */
-		pantalla.add(listaReproduccion, BorderLayout.CENTER);
+//		pantalla.add(listaReproduccion, BorderLayout.CENTER);
+
+		AlbumChooser cas=new AlbumChooser();
+		pantalla.add(cas, BorderLayout.CENTER);
 		/* fin pantalla */
 
 		menuPrincipal = new MenuPrincipal();
