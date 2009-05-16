@@ -250,6 +250,7 @@ public class Ventana extends JFrame {
 		pantallaReproduccion = new pantallaReproduccion();
 		/* prueba */
 		Cancion c = new Cancion();
+		c.setArtista("Los Agapitos");
 		c.setAlbum("Album 1");
 		c.setNombre("Canción de Prueba");
 		c.setMinutos(4);
