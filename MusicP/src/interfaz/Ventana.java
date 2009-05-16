@@ -38,7 +38,7 @@ import logica.Cancion;
 public class Ventana extends JFrame {
 
 	/**
-	 *
+	 * 
 	 */
 	private static final long serialVersionUID = 1L;
 	private JPanel fondo;
@@ -75,24 +75,27 @@ public class Ventana extends JFrame {
 		iniciarComponentes();
 		agregarEventos();
 		ponerArrastrable();
+
 	}
 
 	private void agregarEventos() {
-		botonMinimizarMenuPrincipal.addActionListener(new ActionListener(){
+		botonMinimizarMenuPrincipal.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				menuPrincipal.empezarAnimacion();
 				botonMinimizarMenuPrincipal.setTipo(!menuPrincipal.esVisible());
-			}});
+			}
+		});
 
-		botonMinimizarPanelReproductor.addActionListener(new ActionListener(){
+		botonMinimizarPanelReproductor.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				reproductor.empezarAnimacion();
 				botonMinimizarPanelReproductor.setTipo(reproductor.esVisible());
-			}});
+			}
+		});
 
 		botonVolumen.addActionListener(new ActionListener() {
 
@@ -101,6 +104,18 @@ public class Ventana extends JFrame {
 				pv.setLocation(botonVolumen.getX() - 8 + reproductor.getX(),
 						botonVolumen.getY() - 78 + reproductor.getY());
 				pv.ver();
+			}
+		});
+		botonVolumen.addMouseListener(new java.awt.event.MouseAdapter() {
+
+			@Override
+			public void mouseEntered(java.awt.event.MouseEvent evt) {
+				botonVolumen.mouseEntered();
+			}
+
+			@Override
+			public void mouseExited(java.awt.event.MouseEvent evt) {
+				botonVolumen.mouseExited();
 			}
 		});
 
@@ -121,6 +136,67 @@ public class Ventana extends JFrame {
 			@Override
 			public void mouseExited(java.awt.event.MouseEvent evt) {
 				botonPlay.mouseExited();
+			}
+		});
+		
+		
+		botonSiguiente.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+
+			}
+		});
+		botonSiguiente.addMouseListener(new java.awt.event.MouseAdapter() {
+
+			@Override
+			public void mouseEntered(java.awt.event.MouseEvent evt) {
+				botonSiguiente.mouseEntered();
+			}
+
+			@Override
+			public void mouseExited(java.awt.event.MouseEvent evt) {
+				botonSiguiente.mouseExited();
+			}
+		});
+		
+		BotonAtras.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+
+			}
+		});
+		BotonAtras.addMouseListener(new java.awt.event.MouseAdapter() {
+
+			@Override
+			public void mouseEntered(java.awt.event.MouseEvent evt) {
+				BotonAtras.mouseEntered();
+			}
+
+			@Override
+			public void mouseExited(java.awt.event.MouseEvent evt) {
+				BotonAtras.mouseExited();
+			}
+		});
+		
+		botonStop.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+
+			}
+		});
+		botonStop.addMouseListener(new java.awt.event.MouseAdapter() {
+
+			@Override
+			public void mouseEntered(java.awt.event.MouseEvent evt) {
+				botonStop.mouseEntered();
+			}
+
+			@Override
+			public void mouseExited(java.awt.event.MouseEvent evt) {
+				botonStop.mouseExited();
 			}
 		});
 	}
@@ -220,8 +296,8 @@ public class Ventana extends JFrame {
 
 		botonMinimizarPanelReproductor = new BotonEsconder();
 		botonMinimizarPanelReproductor.setTipo(BotonEsconder.BAJAR);
-		botonMinimizarPanelReproductor.setBounds(
-				fondoFalso.getWidth() / 2 , 0, 15, 15);
+		botonMinimizarPanelReproductor.setBounds(fondoFalso.getWidth() / 2, 0,
+				15, 15);
 		fondoFalso.add(botonMinimizarPanelReproductor);
 
 		lp.add(fondoFalso, new Integer(3));
@@ -235,7 +311,7 @@ public class Ventana extends JFrame {
 
 		botonMinimizarMenuPrincipal = new BotonEsconder();
 		botonMinimizarMenuPrincipal.setTipo(BotonEsconder.SUBIR);
-		botonMinimizarMenuPrincipal.setBounds(fondoFalso2.getWidth() / 2 ,
+		botonMinimizarMenuPrincipal.setBounds(fondoFalso2.getWidth() / 2,
 				fondoFalso2.getHeight() - 15, 15, 15);
 		fondoFalso2.add(botonMinimizarMenuPrincipal);
 
@@ -265,13 +341,13 @@ public class Ventana extends JFrame {
 		pantallaReproduccion.comenzarCuenta();
 
 		listaReproduccion = new ListaReproduccion();
-		/*prueba con lista*/
-		ArrayList<Cancion> z=new ArrayList<Cancion>();
+		/* prueba con lista */
+		ArrayList<Cancion> z = new ArrayList<Cancion>();
 		for (int i = 0; i < 40; i++) {
 			z.add(c);
 		}
 		listaReproduccion.setListaCanciones(z);
-		/*fin prueba*/
+		/* fin prueba */
 		pantalla.add(listaReproduccion, BorderLayout.CENTER);
 		/* fin pantalla */
 
