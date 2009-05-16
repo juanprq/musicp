@@ -67,7 +67,7 @@ public class MenuPrincipal extends JPanel {
 			y += velocidad;
 		}
 		this.setLocation(x, y);
-		if (y <= 10 || y >= 44) {
+		if (y <= 10 || y >= 41) {
 			temp.stop();
 			visible = !visible;
 		}
