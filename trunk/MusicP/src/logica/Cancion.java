@@ -3,6 +3,7 @@ package logica;
 public class Cancion {
 
 	private String nombre;
+	private String artista;
 	private String album;
 	private String url;
 	private String urlAlbum;
@@ -73,6 +74,14 @@ public class Cancion {
 
 	public void setAlbum(String album) {
 		this.album = album;
+	}
+
+	public String getArtista() {
+		return artista;
+	}
+
+	public void setArtista(String artista) {
+		this.artista = artista;
 	}
 
 }
