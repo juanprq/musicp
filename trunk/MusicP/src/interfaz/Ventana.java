@@ -44,7 +44,7 @@ public class Ventana extends JFrame {
 	private JButton apagar;
 	private JButton minimizar;
 	private JComponent brillo;
-	private JPanel reproductor;
+	private PanelReproduccion reproductor;
 	private JPanel pantalla;
 	private FondoFalso fondoFalso;
 	private BotonPlay botonPlay;
@@ -77,6 +77,22 @@ public class Ventana extends JFrame {
 	}
 
 	private void agregarEventos() {
+		botonMinimizarMenuPrincipal.addActionListener(new ActionListener(){
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				menuPrincipal.empezarAnimacion();
+				botonMinimizarMenuPrincipal.setTipo(BotonEsconder.BAJAR);
+			}});
+
+		botonMinimizarPanelReproductor.addActionListener(new ActionListener(){
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				reproductor.empezarAnimacion();
+				botonMinimizarPanelReproductor.setTipo(BotonEsconder.SUBIR);
+			}});
+
 		botonVolumen.addActionListener(new ActionListener() {
 
 			@Override
