@@ -18,7 +18,7 @@ public class app {
 		} catch (UnsupportedLookAndFeelException e) {
 			e.printStackTrace();
 		}
-		Shape mask = new RoundRectangle2D.Float(10, 40, 526, 314, 118, 118);
+		Shape mask = new RoundRectangle2D.Float(10, 40, 526, 310, 118, 118);
 		Ventana miVentana = new Ventana();
 		WindowUtils.setWindowMask(miVentana, mask);
 
