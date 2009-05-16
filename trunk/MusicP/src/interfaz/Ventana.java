@@ -140,7 +140,7 @@ public class Ventana extends JFrame {
 
 		fondo = new Fondo();
 		fondo.setLayout(null);
-		fondo.setBounds(7, 15, 526, 314);
+		fondo.setBounds(7, 11, 526, 314);
 		this.getContentPane().add(fondo);
 
 		apagar = new BotonApagar();
@@ -193,14 +193,14 @@ public class Ventana extends JFrame {
 		lp.add(pv, new Integer(3));
 
 		fondoFalso = new FondoFalso();
-		fondoFalso.setBounds(112, 298, 319, 34);
+		fondoFalso.setBounds(112, 294, 319, 34);
 		lp.add(fondoFalso, new Integer(3));
 		/* Fin componentes del panel de reproduccion */
 
 		/* Componentes Menu */
 
 		fondoFalso2 = new FondoFalso2();
-		fondoFalso2.setBounds(132, 15, 273, 29);
+		fondoFalso2.setBounds(132, 11, 273, 29);
 		lp.add(fondoFalso2, new Integer(3));
 
 		/* Fin Componentes Menu */
@@ -227,7 +227,7 @@ public class Ventana extends JFrame {
 		/* fin pantalla */
 
 		menuPrincipal = new MenuPrincipal();
-		menuPrincipal.setBounds(139, 44, 266, 47);
+		menuPrincipal.setBounds(139, 31, 266, 47);
 		lp.add(menuPrincipal, new Integer(2));
 	}
 
