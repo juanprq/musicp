@@ -4,8 +4,10 @@ import interfaz.componentes.BotonApagar;
 import interfaz.componentes.BotonMinimizar;
 import interfaz.componentes.Brillo;
 import interfaz.componentes.Fondo;
+import interfaz.componentes.ListaReproduccion.ListaReproduccion;
 import interfaz.componentes.menuPrincipal.FondoFalso2;
 import interfaz.componentes.menuPrincipal.MenuPrincipal;
+import interfaz.componentes.panelReproductor.BotonEsconder;
 import interfaz.componentes.panelReproductor.BotonPlay;
 import interfaz.componentes.panelReproductor.BotonSiguiente;
 import interfaz.componentes.panelReproductor.BotonStop;
@@ -58,6 +60,9 @@ public class Ventana extends JFrame {
 	private FondoFalso2 fondoFalso2;
 	private MenuPrincipal menuPrincipal;
 	private pantallaReproduccion pantallaReproduccion;
+	private ListaReproduccion ListaReproduccion;
+	private BotonEsconder botonMinimizarMenuPrincipal;
+	private BotonEsconder botonMinimizarPanelReproductor;
 
 	public Ventana() {
 		super("Hamilpod");
@@ -193,14 +198,30 @@ public class Ventana extends JFrame {
 		lp.add(pv, new Integer(3));
 
 		fondoFalso = new FondoFalso();
+		fondoFalso.setLayout(null);
 		fondoFalso.setBounds(112, 294, 319, 34);
+
+		botonMinimizarPanelReproductor = new BotonEsconder();
+		botonMinimizarPanelReproductor.setTipo(BotonEsconder.BAJAR);
+		botonMinimizarPanelReproductor.setBounds(
+				fondoFalso.getWidth() / 2 - 18, 0, 15, 15);
+		fondoFalso.add(botonMinimizarPanelReproductor);
+
 		lp.add(fondoFalso, new Integer(3));
 		/* Fin componentes del panel de reproduccion */
 
 		/* Componentes Menu */
 
 		fondoFalso2 = new FondoFalso2();
+		fondoFalso2.setLayout(null);
 		fondoFalso2.setBounds(132, 11, 273, 29);
+
+		botonMinimizarMenuPrincipal = new BotonEsconder();
+		botonMinimizarMenuPrincipal.setTipo(BotonEsconder.SUBIR);
+		botonMinimizarMenuPrincipal.setBounds(fondoFalso2.getWidth() / 2 - 15,
+				fondoFalso2.getHeight() - 15, 15, 15);
+		fondoFalso2.add(botonMinimizarMenuPrincipal);
+
 		lp.add(fondoFalso2, new Integer(3));
 
 		/* Fin Componentes Menu */
@@ -221,9 +242,12 @@ public class Ventana extends JFrame {
 		c.setCalificacion(4);
 		c.setComentarios("holaasdasd");
 		/* fin prueba */
-		pantalla.add(pantallaReproduccion, BorderLayout.CENTER);
+		// pantalla.add(pantallaReproduccion, BorderLayout.CENTER);
 		pantallaReproduccion.setCancion(c);
 		pantallaReproduccion.comenzarCuenta();
+
+		ListaReproduccion = new ListaReproduccion();
+		pantalla.add(ListaReproduccion, BorderLayout.CENTER);
 		/* fin pantalla */
 
 		menuPrincipal = new MenuPrincipal();
