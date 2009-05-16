@@ -24,6 +24,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionAdapter;
+import java.util.ArrayList;
 
 import javax.swing.JButton;
 import javax.swing.JComponent;
@@ -60,7 +61,7 @@ public class Ventana extends JFrame {
 	private FondoFalso2 fondoFalso2;
 	private MenuPrincipal menuPrincipal;
 	private pantallaReproduccion pantallaReproduccion;
-	private ListaReproduccion ListaReproduccion;
+	private ListaReproduccion listaReproduccion;
 	private BotonEsconder botonMinimizarMenuPrincipal;
 	private BotonEsconder botonMinimizarPanelReproductor;
 
@@ -263,8 +264,15 @@ public class Ventana extends JFrame {
 		pantallaReproduccion.setCancion(c);
 		pantallaReproduccion.comenzarCuenta();
 
-		ListaReproduccion = new ListaReproduccion();
-		pantalla.add(ListaReproduccion, BorderLayout.CENTER);
+		listaReproduccion = new ListaReproduccion();
+		/*prueba con lista*/
+		ArrayList<Cancion> z=new ArrayList<Cancion>();
+		for (int i = 0; i < 40; i++) {
+			z.add(c);
+		}
+		listaReproduccion.setListaCanciones(z);
+		/*fin prueba*/
+		pantalla.add(listaReproduccion, BorderLayout.CENTER);
 		/* fin pantalla */
 
 		menuPrincipal = new MenuPrincipal();
