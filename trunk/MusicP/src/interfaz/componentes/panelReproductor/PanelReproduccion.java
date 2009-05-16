@@ -15,7 +15,6 @@ import java.awt.image.BufferedImage;
 import java.awt.image.ConvolveOp;
 import java.awt.image.Kernel;
 
-import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 
@@ -27,7 +26,6 @@ public class PanelReproduccion extends JPanel {
 	private static final long serialVersionUID = 1L;
 	private Shape cuadrado;
 	private BufferedImage sombra;
-	private JButton botonMinimizar;
 	private boolean visible = true;
 	private Timer temp;
 	private final int velocidad = 1;
@@ -40,25 +38,11 @@ public class PanelReproduccion extends JPanel {
 	}
 
 	private void inicializarComponentes() {
-		botonMinimizar = new BotonMinimizar();
-		botonMinimizar.setText("_");
-		botonMinimizar.setBounds(239, 1, 12, 12);
-		botonMinimizar.setToolTipText("Ocultar panel de reproducción");
-		this.add(botonMinimizar);
-
 		temp = new Timer(20, new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				animar();
-			}
-		});
-
-		botonMinimizar.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				empezarAnimacion();
 			}
 		});
 	}
@@ -72,13 +56,13 @@ public class PanelReproduccion extends JPanel {
 			y -= velocidad;
 		}
 		this.setLocation(x, y);
-		if (y <= 227 || y >= 287) {
+		if (y <= 227 || y >= 300) {
 			temp.stop();
 			visible = !visible;
 		}
 	}
 
-	protected void empezarAnimacion() {
+	public void empezarAnimacion() {
 		temp.start();
 	}
 
