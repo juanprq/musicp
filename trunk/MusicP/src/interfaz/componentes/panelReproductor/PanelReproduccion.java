@@ -135,4 +135,8 @@ public class PanelReproduccion extends JPanel {
 		return new ConvolveOp(kernel);
 	}
 
+	public  boolean esVisible() {
+		return visible;
+	}
+
 }

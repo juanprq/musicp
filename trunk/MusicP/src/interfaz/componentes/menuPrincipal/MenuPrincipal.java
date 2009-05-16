@@ -51,7 +51,7 @@ public class MenuPrincipal extends JPanel {
 			y += velocidad;
 		}
 		this.setLocation(x, y);
-		if (y <= -5 || y >= 44) {
+		if (y <= -5 || y >= 31) {
 			temp.stop();
 			visible = !visible;
 		}
@@ -66,6 +66,13 @@ public class MenuPrincipal extends JPanel {
 		g2.setColor(new Color(153, 153, 153));
 		g2.setStroke(new BasicStroke(2));
 		g2.draw(fondo);
+	}
+	/**
+	 * Metodo q informa si el panel esta oculto o no
+	 * @return
+	 */
+	public boolean esVisible(){
+		return visible;
 	}
 
 }

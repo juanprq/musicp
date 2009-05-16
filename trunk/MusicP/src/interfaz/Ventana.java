@@ -83,7 +83,7 @@ public class Ventana extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				menuPrincipal.empezarAnimacion();
-				botonMinimizarMenuPrincipal.setTipo(BotonEsconder.BAJAR);
+				botonMinimizarMenuPrincipal.setTipo(!menuPrincipal.esVisible());
 			}});
 
 		botonMinimizarPanelReproductor.addActionListener(new ActionListener(){
@@ -91,7 +91,7 @@ public class Ventana extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				reproductor.empezarAnimacion();
-				botonMinimizarPanelReproductor.setTipo(BotonEsconder.SUBIR);
+				botonMinimizarPanelReproductor.setTipo(reproductor.esVisible());
 			}});
 
 		botonVolumen.addActionListener(new ActionListener() {
@@ -221,7 +221,7 @@ public class Ventana extends JFrame {
 		botonMinimizarPanelReproductor = new BotonEsconder();
 		botonMinimizarPanelReproductor.setTipo(BotonEsconder.BAJAR);
 		botonMinimizarPanelReproductor.setBounds(
-				fondoFalso.getWidth() / 2 - 18, 0, 15, 15);
+				fondoFalso.getWidth() / 2 , 0, 15, 15);
 		fondoFalso.add(botonMinimizarPanelReproductor);
 
 		lp.add(fondoFalso, new Integer(3));
@@ -235,7 +235,7 @@ public class Ventana extends JFrame {
 
 		botonMinimizarMenuPrincipal = new BotonEsconder();
 		botonMinimizarMenuPrincipal.setTipo(BotonEsconder.SUBIR);
-		botonMinimizarMenuPrincipal.setBounds(fondoFalso2.getWidth() / 2 - 15,
+		botonMinimizarMenuPrincipal.setBounds(fondoFalso2.getWidth() / 2 ,
 				fondoFalso2.getHeight() - 15, 15, 15);
 		fondoFalso2.add(botonMinimizarMenuPrincipal);
 
