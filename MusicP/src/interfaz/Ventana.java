@@ -337,7 +337,7 @@ public class Ventana extends JFrame {
 		c.setCalificacion(4);
 		c.setComentarios("holaasdasd");
 		/* fin prueba */
-		// pantalla.add(pantallaReproduccion, BorderLayout.CENTER);
+//		 pantalla.add(pantallaReproduccion, BorderLayout.CENTER);
 		pantallaReproduccion.setCancion(c);
 		pantallaReproduccion.comenzarCuenta();
 
@@ -349,10 +349,10 @@ public class Ventana extends JFrame {
 		}
 		listaReproduccion.setListaCanciones(z);
 		/* fin prueba */
-//		pantalla.add(listaReproduccion, BorderLayout.CENTER);
+		pantalla.add(listaReproduccion, BorderLayout.CENTER);
 
-		AlbumChooser cas=new AlbumChooser();
-		pantalla.add(cas, BorderLayout.CENTER);
+//		AlbumChooser cas=new AlbumChooser();
+//		pantalla.add(cas, BorderLayout.CENTER);
 		/* fin pantalla */
 
 		menuPrincipal = new MenuPrincipal();

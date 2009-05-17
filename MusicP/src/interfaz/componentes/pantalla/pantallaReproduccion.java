@@ -109,7 +109,7 @@ public class pantallaReproduccion extends JPanel {
 		tl.draw(g2, 8, 50);
 
 		if (cancion != null) {
-			String cadena = cancion.getNombre() + " - " + cancion.getAlbum();
+			String cadena = cancion.getNombre() + " - " + cancion.getArtista();
 			tl = new TextLayout(cadena, fuenteCancion, g2
 					.getFontRenderContext());
 			tl.draw(g2, 9, 90);
