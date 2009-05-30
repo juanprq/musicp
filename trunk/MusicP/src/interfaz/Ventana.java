@@ -63,10 +63,16 @@ public class Ventana extends JFrame {
 	private FondoFalso2 fondoFalso2;
 	private MenuPrincipal menuPrincipal;
 	private ItemMenuPrincipal botonReproduccionActual;
+	private ItemMenuPrincipal botonListaDeReproduccion;
+	private ItemMenuPrincipal botonAlbum;
 	private pantallaReproduccion pantallaReproduccion;
 	private ListaReproduccion listaReproduccion;
 	private BotonEsconder botonMinimizarMenuPrincipal;
 	private BotonEsconder botonMinimizarPanelReproductor;
+
+	private AlbumChooser cas;
+
+	private JPanel panelActual;
 
 	public Ventana() {
 		super("Hamilpod");
@@ -78,6 +84,8 @@ public class Ventana extends JFrame {
 		iniciarComponentes();
 		agregarEventos();
 		ponerArrastrable();
+
+		mostrarAlbum();
 
 	}
 
@@ -142,7 +150,6 @@ public class Ventana extends JFrame {
 			}
 		});
 
-
 		botonSiguiente.addActionListener(new ActionListener() {
 
 			@Override
@@ -204,17 +211,91 @@ public class Ventana extends JFrame {
 		});
 		botonReproduccionActual.addMouseListener(new java.awt.event.MouseAdapter() {
 
+					@Override
+					public void mouseEntered(java.awt.event.MouseEvent evt) {
+						botonReproduccionActual
+								.setRutaImagen("imagenes/reproduccion.png");
+
+					}
+
+					@Override
+					public void mouseExited(java.awt.event.MouseEvent evt) {
+						botonReproduccionActual
+								.setRutaImagen("imagenes/reproduccion.png");
+					}
+
+					@Override
+					public void mouseClicked(java.awt.event.MouseEvent evt) {
+						mostrarPanelReproduccionActual();
+					}
+				});
+
+		botonListaDeReproduccion.addMouseListener(new java.awt.event.MouseAdapter() {
+
+					@Override
+					public void mouseEntered(java.awt.event.MouseEvent evt) {
+						botonListaDeReproduccion
+								.setRutaImagen("imagenes/reproduccion.png");
+
+					}
+
+					@Override
+					public void mouseExited(java.awt.event.MouseEvent evt) {
+						botonListaDeReproduccion
+								.setRutaImagen("imagenes/reproduccion.png");
+					}
+
+					@Override
+					public void mouseClicked(java.awt.event.MouseEvent evt) {
+						mostrarListaDeReproduccion();
+					}
+				});
+
+		botonAlbum.addMouseListener(new java.awt.event.MouseAdapter() {
+
 			@Override
 			public void mouseEntered(java.awt.event.MouseEvent evt) {
-				botonReproduccionActual.setRutaImagen("imagenes/reproduccion.png");
-				
+				botonAlbum
+						.setRutaImagen("imagenes/reproduccion.png");
+
 			}
 
 			@Override
 			public void mouseExited(java.awt.event.MouseEvent evt) {
-				botonReproduccionActual.setRutaImagen("imagenes/reproduccion.png");
+				botonAlbum
+						.setRutaImagen("imagenes/reproduccion.png");
+			}
+
+			@Override
+			public void mouseClicked(java.awt.event.MouseEvent evt) {
+				mostrarAlbum();
 			}
 		});
+	}
+
+	private void mostrarPanelReproduccionActual() {
+		if (panelActual != null) {
+			pantalla.remove(panelActual);
+		}
+		panelActual = pantallaReproduccion;
+		pantalla.add(pantallaReproduccion, BorderLayout.CENTER);
+		repaint();
+	}
+
+	private void mostrarListaDeReproduccion() {
+		if (panelActual != null)
+			pantalla.remove(panelActual);
+		panelActual = listaReproduccion;
+		pantalla.add(listaReproduccion, BorderLayout.CENTER);
+		repaint();
+	}
+
+	private void mostrarAlbum() {
+		if (panelActual != null)
+			pantalla.remove(panelActual);
+		panelActual = cas;
+		pantalla.add(cas, BorderLayout.CENTER);
+		repaint();
 	}
 
 	private void ponerArrastrable() {
@@ -352,33 +433,43 @@ public class Ventana extends JFrame {
 		c.setCalificacion(4);
 		c.setComentarios("holaasdasd");
 		/* fin prueba */
-		pantalla.add(pantallaReproduccion, BorderLayout.CENTER);
+
 		pantallaReproduccion.setCancion(c);
 		pantallaReproduccion.comenzarCuenta();
+		/* prueba */
+		listaReproduccion = new ListaReproduccion();
+		/* prueba con lista */
+		ArrayList<Cancion> z = new ArrayList<Cancion>();
+		for (int i = 0; i < 40; i++) {
+			z.add(c);
+		}
+		listaReproduccion.setListaCanciones(z);
+		/* fin prueba */
 
-//		listaReproduccion = new ListaReproduccion();
-//		/* prueba con lista */
-//		ArrayList<Cancion> z = new ArrayList<Cancion>();
-//		for (int i = 0; i < 40; i++) {
-//			z.add(c);
-//		}
-//		listaReproduccion.setListaCanciones(z);
-//		/* fin prueba */
-//		pantalla.add(listaReproduccion, BorderLayout.CENTER);
-
-//		AlbumChooser cas=new AlbumChooser();
-//		pantalla.add(cas, BorderLayout.CENTER);
-		/* fin pantalla */
+		cas = new AlbumChooser();
 
 		menuPrincipal = new MenuPrincipal();
 		menuPrincipal.setBounds(139, 31, 266, 47);
 		lp.add(menuPrincipal, new Integer(2));
-		
+
 		botonReproduccionActual = new ItemMenuPrincipal();
 		botonReproduccionActual.setRutaImagen("imagenes/reproduccion.png");
 		menuPrincipal.add(botonReproduccionActual);
 		botonReproduccionActual.setLocation(10, 10);
 		botonReproduccionActual.setToolTipText("Reproducción Actual");
+
+		botonListaDeReproduccion = new ItemMenuPrincipal();
+		botonListaDeReproduccion.setRutaImagen("imagenes/reproduccion.png");
+		menuPrincipal.add(botonListaDeReproduccion);
+		botonListaDeReproduccion.setLocation(50, 10);
+		botonListaDeReproduccion.setToolTipText("Lista de reproducción");
+
+		botonAlbum = new ItemMenuPrincipal();
+		botonAlbum.setRutaImagen("imagenes/reproduccion.png");
+		menuPrincipal.add(botonAlbum);
+		botonAlbum.setLocation(90, 10);
+		botonAlbum.setToolTipText("Seleccionar Album");
+
 	}
 
 	// **************eventos********************
