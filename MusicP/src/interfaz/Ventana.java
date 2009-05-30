@@ -7,6 +7,7 @@ import interfaz.componentes.Fondo;
 import interfaz.componentes.ListaReproduccion.ListaReproduccion;
 import interfaz.componentes.albumChooser.AlbumChooser;
 import interfaz.componentes.menuPrincipal.FondoFalso2;
+import interfaz.componentes.menuPrincipal.ItemMenuPrincipal;
 import interfaz.componentes.menuPrincipal.MenuPrincipal;
 import interfaz.componentes.panelReproductor.BotonEsconder;
 import interfaz.componentes.panelReproductor.BotonPlay;
@@ -61,6 +62,7 @@ public class Ventana extends JFrame {
 	private int yi;
 	private FondoFalso2 fondoFalso2;
 	private MenuPrincipal menuPrincipal;
+	private ItemMenuPrincipal botonReproduccionActual;
 	private pantallaReproduccion pantallaReproduccion;
 	private ListaReproduccion listaReproduccion;
 	private BotonEsconder botonMinimizarMenuPrincipal;
@@ -198,6 +200,19 @@ public class Ventana extends JFrame {
 			@Override
 			public void mouseExited(java.awt.event.MouseEvent evt) {
 				botonStop.mouseExited();
+			}
+		});
+		botonReproduccionActual.addMouseListener(new java.awt.event.MouseAdapter() {
+
+			@Override
+			public void mouseEntered(java.awt.event.MouseEvent evt) {
+				botonReproduccionActual.setRutaImagen("imagenes/music2.png");
+				
+			}
+
+			@Override
+			public void mouseExited(java.awt.event.MouseEvent evt) {
+				botonReproduccionActual.setRutaImagen("imagenes/music1.png");
 			}
 		});
 	}
@@ -358,6 +373,12 @@ public class Ventana extends JFrame {
 		menuPrincipal = new MenuPrincipal();
 		menuPrincipal.setBounds(139, 31, 266, 47);
 		lp.add(menuPrincipal, new Integer(2));
+		
+		botonReproduccionActual = new ItemMenuPrincipal();
+		botonReproduccionActual.setRutaImagen("imagenes/music1.png");
+		menuPrincipal.add(botonReproduccionActual);
+		botonReproduccionActual.setLocation(10, 10);
+		botonReproduccionActual.setToolTipText("Reproducción Actual");
 	}
 
 	// **************eventos********************
