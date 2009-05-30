@@ -206,13 +206,13 @@ public class Ventana extends JFrame {
 
 			@Override
 			public void mouseEntered(java.awt.event.MouseEvent evt) {
-				botonReproduccionActual.setRutaImagen("imagenes/music2.png");
+				botonReproduccionActual.setRutaImagen("imagenes/reproduccion.png");
 				
 			}
 
 			@Override
 			public void mouseExited(java.awt.event.MouseEvent evt) {
-				botonReproduccionActual.setRutaImagen("imagenes/music1.png");
+				botonReproduccionActual.setRutaImagen("imagenes/reproduccion.png");
 			}
 		});
 	}
@@ -375,7 +375,7 @@ public class Ventana extends JFrame {
 		lp.add(menuPrincipal, new Integer(2));
 		
 		botonReproduccionActual = new ItemMenuPrincipal();
-		botonReproduccionActual.setRutaImagen("imagenes/music1.png");
+		botonReproduccionActual.setRutaImagen("imagenes/reproduccion.png");
 		menuPrincipal.add(botonReproduccionActual);
 		botonReproduccionActual.setLocation(10, 10);
 		botonReproduccionActual.setToolTipText("Reproducción Actual");
