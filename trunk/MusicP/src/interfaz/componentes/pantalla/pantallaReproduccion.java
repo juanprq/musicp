@@ -140,6 +140,7 @@ public class pantallaReproduccion extends JPanel {
 		temp.stop();
 		minutos=0;
 		segundos=0;
+		this.repaint();
 	}
 
 }

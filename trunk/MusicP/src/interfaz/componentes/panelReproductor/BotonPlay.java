@@ -67,6 +67,10 @@ public class BotonPlay extends JButton {
 	public void reproducir() {
 		reproduciendo = !reproduciendo;
 	}
+	
+	public boolean estaReproduciendo(){
+		return reproduciendo;
+	}
 
 	public void mouseEntered() {
 		mouseIn = true;
