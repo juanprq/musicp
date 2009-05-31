@@ -279,7 +279,8 @@ public class Ventana extends JFrame {
 		}
 		panelActual = pantallaReproduccion;
 		pantalla.add(pantallaReproduccion, BorderLayout.CENTER);
-		repaint();
+		panelActual.setVisible(false);
+		panelActual.setVisible(true);
 	}
 
 	private void mostrarListaDeReproduccion() {
@@ -287,7 +288,8 @@ public class Ventana extends JFrame {
 			pantalla.remove(panelActual);
 		panelActual = listaReproduccion;
 		pantalla.add(listaReproduccion, BorderLayout.CENTER);
-		repaint();
+		panelActual.setVisible(false);
+		panelActual.setVisible(true);
 	}
 
 	private void mostrarAlbum() {
@@ -295,7 +297,8 @@ public class Ventana extends JFrame {
 			pantalla.remove(panelActual);
 		panelActual = cas;
 		pantalla.add(cas, BorderLayout.CENTER);
-		repaint();
+		panelActual.setVisible(false);
+		panelActual.setVisible(true);
 	}
 
 	private void ponerArrastrable() {
