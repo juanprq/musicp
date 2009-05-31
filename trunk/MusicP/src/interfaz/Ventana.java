@@ -229,19 +229,6 @@ public class Ventana extends JFrame {
 		botonReproduccionActual.addMouseListener(new java.awt.event.MouseAdapter() {
 
 					@Override
-					public void mouseEntered(java.awt.event.MouseEvent evt) {
-						botonReproduccionActual
-								.setRutaImagen("imagenes/reproduccion.png");
-
-					}
-
-					@Override
-					public void mouseExited(java.awt.event.MouseEvent evt) {
-						botonReproduccionActual
-								.setRutaImagen("imagenes/reproduccion.png");
-					}
-
-					@Override
 					public void mouseClicked(java.awt.event.MouseEvent evt) {
 						pv.ocultar();
 						mostrarPanelReproduccionActual();
@@ -251,19 +238,6 @@ public class Ventana extends JFrame {
 		botonListaDeReproduccion.addMouseListener(new java.awt.event.MouseAdapter() {
 
 					@Override
-					public void mouseEntered(java.awt.event.MouseEvent evt) {
-						botonListaDeReproduccion
-								.setRutaImagen("imagenes/reproduccion.png");
-
-					}
-
-					@Override
-					public void mouseExited(java.awt.event.MouseEvent evt) {
-						botonListaDeReproduccion
-								.setRutaImagen("imagenes/reproduccion.png");
-					}
-
-					@Override
 					public void mouseClicked(java.awt.event.MouseEvent evt) {
 						pv.ocultar();
 						mostrarListaDeReproduccion();
@@ -271,19 +245,6 @@ public class Ventana extends JFrame {
 				});
 
 		botonAlbum.addMouseListener(new java.awt.event.MouseAdapter() {
-
-			@Override
-			public void mouseEntered(java.awt.event.MouseEvent evt) {
-				botonAlbum
-						.setRutaImagen("imagenes/reproduccion.png");
-
-			}
-
-			@Override
-			public void mouseExited(java.awt.event.MouseEvent evt) {
-				botonAlbum
-						.setRutaImagen("imagenes/reproduccion.png");
-			}
 
 			@Override
 			public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -476,20 +437,17 @@ public class Ventana extends JFrame {
 		menuPrincipal.setBounds(139, 31, 266, 47);
 		lp.add(menuPrincipal, new Integer(2));
 
-		botonReproduccionActual = new ItemMenuPrincipal();
-		botonReproduccionActual.setRutaImagen("imagenes/reproduccion.png");
+		botonReproduccionActual = new ItemMenuPrincipal("imagenes/reproduccionIn.png","imagenes/reproduccionOut.png");
 		menuPrincipal.add(botonReproduccionActual);
 		botonReproduccionActual.setLocation(10, 10);
 		botonReproduccionActual.setToolTipText("Reproducción Actual");
 
-		botonListaDeReproduccion = new ItemMenuPrincipal();
-		botonListaDeReproduccion.setRutaImagen("imagenes/reproduccion.png");
+		botonListaDeReproduccion = new ItemMenuPrincipal("imagenes/reproduccionIn.png","imagenes/reproduccionOut.png");
 		menuPrincipal.add(botonListaDeReproduccion);
 		botonListaDeReproduccion.setLocation(50, 10);
 		botonListaDeReproduccion.setToolTipText("Lista de reproducción");
 
-		botonAlbum = new ItemMenuPrincipal();
-		botonAlbum.setRutaImagen("imagenes/reproduccion.png");
+		botonAlbum = new ItemMenuPrincipal("imagenes/reproduccionIn.png","imagenes/reproduccionOut.png");
 		menuPrincipal.add(botonAlbum);
 		botonAlbum.setLocation(90, 10);
 		botonAlbum.setToolTipText("Seleccionar Album");
