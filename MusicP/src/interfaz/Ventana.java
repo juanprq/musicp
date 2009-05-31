@@ -140,6 +140,13 @@ public class Ventana extends JFrame {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				pv.ocultar();
+				if(!botonPlay.estaReproduciendo()){
+					pantallaReproduccion.comenzarCuenta();
+				}
+				else{
+					pantallaReproduccion.pararCuenta();
+				}
 				botonPlay.reproducir();
 			}
 		});
@@ -160,7 +167,7 @@ public class Ventana extends JFrame {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-
+				pv.ocultar();
 			}
 		});
 		botonSiguiente.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -180,7 +187,7 @@ public class Ventana extends JFrame {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-
+				pv.ocultar();
 			}
 		});
 		BotonAtras.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -200,7 +207,11 @@ public class Ventana extends JFrame {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-
+				pv.ocultar();
+				if(botonPlay.estaReproduciendo()){
+					botonPlay.reproducir();
+				}
+				pantallaReproduccion.reiniciarCuenta();
 			}
 		});
 		botonStop.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -232,6 +243,7 @@ public class Ventana extends JFrame {
 
 					@Override
 					public void mouseClicked(java.awt.event.MouseEvent evt) {
+						pv.ocultar();
 						mostrarPanelReproduccionActual();
 					}
 				});
@@ -253,6 +265,7 @@ public class Ventana extends JFrame {
 
 					@Override
 					public void mouseClicked(java.awt.event.MouseEvent evt) {
+						pv.ocultar();
 						mostrarListaDeReproduccion();
 					}
 				});
@@ -274,6 +287,7 @@ public class Ventana extends JFrame {
 
 			@Override
 			public void mouseClicked(java.awt.event.MouseEvent evt) {
+				pv.ocultar();
 				mostrarAlbum();
 			}
 		});
@@ -319,6 +333,7 @@ public class Ventana extends JFrame {
 			@Override
 			public void mousePressed(MouseEvent evt) {
 				mousePresionado(evt);
+				pv.ocultar();
 			}
 		});
 
@@ -334,6 +349,7 @@ public class Ventana extends JFrame {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				pv.ocultar();
 				minimizar();
 			}
 		});
@@ -444,7 +460,6 @@ public class Ventana extends JFrame {
 		/* fin prueba */
 
 		pantallaReproduccion.setCancion(c);
-		pantallaReproduccion.comenzarCuenta();
 		/* prueba */
 		listaReproduccion = new ListaReproduccion();
 		/* prueba con lista */
