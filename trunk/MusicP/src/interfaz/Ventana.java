@@ -104,6 +104,7 @@ public class Ventana extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				reproductor.empezarAnimacion();
+				pv.ocultar();
 				botonMinimizarPanelReproductor.setTipo(reproductor.esVisible());
 			}
 		});
@@ -112,9 +113,14 @@ public class Ventana extends JFrame {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				if(reproductor.esAnimado())
+					return;
 				pv.setLocation(botonVolumen.getX() - 8 + reproductor.getX(),
 						botonVolumen.getY() - 78 + reproductor.getY());
-				pv.ver();
+				if(pv.isVisible())
+					pv.ocultar();
+				else
+					pv.mostrar();
 			}
 		});
 		botonVolumen.addMouseListener(new java.awt.event.MouseAdapter() {
