@@ -27,6 +27,7 @@ public class PanelReproduccion extends JPanel {
 	private Shape cuadrado;
 	private BufferedImage sombra;
 	private boolean visible = true;
+	private boolean animado = false;
 	private Timer temp;
 	private final int velocidad = 1;
 
@@ -58,11 +59,13 @@ public class PanelReproduccion extends JPanel {
 		this.setLocation(x, y);
 		if (y <= 227 || y >= 300) {
 			temp.stop();
+			animado=false;
 			visible = !visible;
 		}
 	}
 
 	public void empezarAnimacion() {
+		animado=true;
 		temp.start();
 	}
 
@@ -137,6 +140,9 @@ public class PanelReproduccion extends JPanel {
 
 	public  boolean esVisible() {
 		return visible;
+	}
+	public  boolean esAnimado() {
+		return animado;
 	}
 
 }

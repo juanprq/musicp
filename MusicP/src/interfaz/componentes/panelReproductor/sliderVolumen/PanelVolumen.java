@@ -18,6 +18,7 @@ public class PanelVolumen extends JPanel {
 	private static final long serialVersionUID = 1L;
 	private Shape fondo;
 	private SliderVolumen slider;
+	
 
 	public PanelVolumen() {
 		this.setOpaque(false);
@@ -44,8 +45,11 @@ public class PanelVolumen extends JPanel {
 
 	}
 
-	public void ver(){
-		boolean visible=!this.isVisible();
-		this.setVisible(visible);
+
+	public void mostrar(){
+		this.setVisible(true);
+	}
+	public void ocultar(){
+		this.setVisible(false);
 	}
 }
