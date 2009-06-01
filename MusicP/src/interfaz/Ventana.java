@@ -42,7 +42,7 @@ import logica.Cancion;
 public class Ventana extends JFrame {
 
 	/**
-	 * 
+	 *
 	 */
 	private static final long serialVersionUID = 1L;
 	private JPanel fondo;
@@ -322,8 +322,6 @@ public class Ventana extends JFrame {
 	private void mostrarListaDeReproduccion() {
 		if (panelActual != null)
 			pantalla.remove(panelActual);
-		ocultarMenuPrincipal();
-		ocultarMenuReproduccion();
 		panelActual = listaReproduccion;
 		pantalla.add(listaReproduccion, BorderLayout.CENTER);
 		panelActual.setVisible(false);
@@ -333,8 +331,6 @@ public class Ventana extends JFrame {
 	private void mostrarListaDeSugeridas() {
 		if (panelActual != null)
 			pantalla.remove(panelActual);
-		ocultarMenuPrincipal();
-		ocultarMenuReproduccion();
 		panelActual = miListaSugeridas;
 		pantalla.add(miListaSugeridas, BorderLayout.CENTER);
 		panelActual.setVisible(false);
@@ -511,31 +507,31 @@ public class Ventana extends JFrame {
 		botonReproduccionActual = new ItemMenuPrincipal(
 				"imagenes/reproduccion.png", "imagenes/reproduccionf.png");
 		menuPrincipal.add(botonReproduccionActual);
-		botonReproduccionActual.setLocation(10, 10);
+		botonReproduccionActual.setLocation(40, 10);
 		botonReproduccionActual.setToolTipText("Reproducción Actual");
 
 		botonListaDeReproduccion = new ItemMenuPrincipal("imagenes/lista.png",
 				"imagenes/listaf.png");
 		menuPrincipal.add(botonListaDeReproduccion);
-		botonListaDeReproduccion.setLocation(50, 10);
+		botonListaDeReproduccion.setLocation(80, 10);
 		botonListaDeReproduccion.setToolTipText("Lista de reproducción");
 
 		botonAlbum = new ItemMenuPrincipal("imagenes/album.png",
 				"imagenes/albumf.png");
 		menuPrincipal.add(botonAlbum);
-		botonAlbum.setLocation(90, 10);
+		botonAlbum.setLocation(120, 10);
 		botonAlbum.setToolTipText("Seleccionar Album");
 
 		botonSugerir = new ItemMenuPrincipal("imagenes/sugerir.png",
 				"imagenes/sugerirf.png");
 		menuPrincipal.add(botonSugerir);
-		botonSugerir.setLocation(130, 10);
+		botonSugerir.setLocation(160, 10);
 		botonSugerir.setToolTipText("Sugerir selección");
 
 		botonListaSugeridas = new ItemMenuPrincipal("imagenes/sugerir.png",
 				"imagenes/sugerirf.png");
 		menuPrincipal.add(botonListaSugeridas);
-		botonListaSugeridas.setLocation(170, 10);
+		botonListaSugeridas.setLocation(200, 10);
 		botonListaSugeridas.setToolTipText("Canciones sugeridas");
 
 	}
