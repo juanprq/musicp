@@ -65,6 +65,8 @@ public class Ventana extends JFrame {
 	private ItemMenuPrincipal botonReproduccionActual;
 	private ItemMenuPrincipal botonListaDeReproduccion;
 	private ItemMenuPrincipal botonAlbum;
+	private ItemMenuPrincipal botonSugerir;
+
 	private pantallaReproduccion pantallaReproduccion;
 	private ListaReproduccion listaReproduccion;
 	private BotonEsconder botonMinimizarMenuPrincipal;
@@ -73,6 +75,7 @@ public class Ventana extends JFrame {
 	private AlbumChooser cas;
 
 	private JPanel panelActual;
+	private Cancion cancionActual;
 
 	public Ventana() {
 		super("Hamilpod");
@@ -252,6 +255,32 @@ public class Ventana extends JFrame {
 				mostrarAlbum();
 			}
 		});
+
+		botonSugerir.addMouseListener(new java.awt.event.MouseAdapter() {
+
+			@Override
+			public void mouseClicked(java.awt.event.MouseEvent evt) {
+				pv.ocultar();
+				sugerir();
+			}
+		});
+	}
+
+	private void sugerir() {
+		String mensaje="";
+		if(panelActual.equals(pantallaReproduccion)){
+			mensaje="La canción "+cancionActual.getNombre()+" se ha sugerido con éxito";
+		}
+		if(panelActual.equals(listaReproduccion)){
+			mensaje="La canción "+cancionActual.getNombre()+" se ha sugerido con éxito";
+		}
+		if(panelActual.equals(cas)){
+			mensaje="El álbum Audioslave se ha sugerido con éxito";
+		}
+		if(panelActual.equals(null)){
+			System.out.println("null");
+		}
+		JOptionPane.showMessageDialog(this, mensaje);
 	}
 
 	private void mostrarPanelReproduccionActual() {
@@ -410,14 +439,15 @@ public class Ventana extends JFrame {
 		pantallaReproduccion = new pantallaReproduccion();
 		/* prueba */
 		Cancion c = new Cancion();
-		c.setArtista("Los Agapitos");
+		c.setArtista("DragonForce");
 		c.setAlbum("Album 1");
-		c.setNombre("Canción de Prueba");
+		c.setNombre("Through the Fire and Flames");
 		c.setMinutos(4);
 		c.setSegundos(30);
 		c.setUrlAlbum("imagenes/album1.jpg");
 		c.setCalificacion(4);
-		c.setComentarios("holaasdasd");
+		c.setComentarios("Holasad");
+		cancionActual=c;
 		/* fin prueba */
 
 		pantallaReproduccion.setCancion(c);
@@ -442,7 +472,7 @@ public class Ventana extends JFrame {
 		botonReproduccionActual.setLocation(10, 10);
 		botonReproduccionActual.setToolTipText("Reproducción Actual");
 
-		botonListaDeReproduccion = new ItemMenuPrincipal("imagenes/reproduccionIn.png","imagenes/reproduccionOut.png");
+		botonListaDeReproduccion = new ItemMenuPrincipal("imagenes/listaIn.png","imagenes/listaOut.png");
 		menuPrincipal.add(botonListaDeReproduccion);
 		botonListaDeReproduccion.setLocation(50, 10);
 		botonListaDeReproduccion.setToolTipText("Lista de reproducción");
@@ -451,6 +481,11 @@ public class Ventana extends JFrame {
 		menuPrincipal.add(botonAlbum);
 		botonAlbum.setLocation(90, 10);
 		botonAlbum.setToolTipText("Seleccionar Album");
+
+		botonSugerir = new ItemMenuPrincipal("imagenes/sugerenciasIn.png","imagenes/sugerenciasOut.png");
+		menuPrincipal.add(botonSugerir);
+		botonSugerir.setLocation(130, 10);
+		botonSugerir.setToolTipText("Sugerencias");
 
 	}
 
