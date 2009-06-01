@@ -10,7 +10,7 @@ public class ItemMenuPrincipal extends JLabel {
 	private ImageIcon iconIn;
 	private ImageIcon iconOut;
 	
-	public ItemMenuPrincipal(String rutaImagenIn,String rutaImagenOut) {
+	public ItemMenuPrincipal(String rutaImagenOut,String rutaImagenIn) {
 		setSize(32, 32);
 		iconIn=new javax.swing.ImageIcon(rutaImagenIn);
 		iconOut=new javax.swing.ImageIcon(rutaImagenOut);

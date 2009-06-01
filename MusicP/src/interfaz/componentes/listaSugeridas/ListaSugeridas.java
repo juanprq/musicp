@@ -17,6 +17,7 @@ import java.util.ArrayList;
 import javax.swing.BoxLayout;
 import javax.swing.JCheckBox;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextField;
@@ -71,15 +72,35 @@ public class ListaSugeridas extends JPanel implements MouseListener {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// eliminar el seleccionado de la lista
+				eliminar();
 			}
 		});
 	}
 
 
 
+	private void eliminar() {
+		int aux = JOptionPane.showConfirmDialog(this,
+				"¿Desea eliminar las sugerencias seleccionadas?", "¿Eliminar?",
+				JOptionPane.YES_NO_OPTION);
+		if (aux == 0) {
+			eliminarSeleccionadas();
+		}	
+	}
+
+	private void eliminarSeleccionadas() {
+		for (JPanel i : canciones) {
+				JCheckBox check=(JCheckBox) i.getComponent(0);
+				if(check.isSelected()){
+					i.setVisible(false);
+					lista.remove(i);
+				}
+			}
+	}
+
 	private void descargar() {
 		miVentana.descargar();
+		eliminarSeleccionadas();
 	}
 
 	private void inicializarComponentes() {
@@ -202,6 +223,10 @@ public class ListaSugeridas extends JPanel implements MouseListener {
 	@Override
 	public void mouseReleased(MouseEvent e) {
 
+	}
+	
+	public JPanel getSeleccionado(){
+		return seleccionado;
 	}
 
 }
