@@ -51,18 +51,8 @@ public class DialogoDescarga extends JDialog{
 		fondo.add(progreso);
 	}
 
-	public static void main(String[] args) {
-		new DialogoDescarga().setVisible(true);
-	}
-
-	@Override
-	public void setVisible(boolean v){
-		if(v){
-			super.setVisible(true);
-			temp.start();
-		} else{
-			super.setVisible(false);
-		}
+	public void animar(){
+		temp.start();
 	}
 
 }
