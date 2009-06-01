@@ -76,10 +76,10 @@ public class ListaSugeridas extends JPanel implements MouseListener {
 		});
 	}
 
-	
+
 
 	private void descargar() {
-		miVentana.descargar();		
+		miVentana.descargar();
 	}
 
 	private void inicializarComponentes() {
@@ -122,8 +122,10 @@ public class ListaSugeridas extends JPanel implements MouseListener {
 		this.listaCanciones = listaCanciones;
 		canciones = new ArrayList<JPanel>();
 		for (int j = 0; j < listaCanciones.size(); j++) {
-			Cancion i = listaCanciones.get(j);
-			JPanel c = new JPanel(new BorderLayout());
+			Cancion i = listaCanciones.get(j);			
+			JPanel c = new JPanel();
+			BoxLayout bl = new BoxLayout(c, BoxLayout.X_AXIS);
+			c.setLayout(bl);
 			if (j % 2 == 0) {
 				c.setBackground(Color.BLACK);
 			} else {
@@ -131,11 +133,11 @@ public class ListaSugeridas extends JPanel implements MouseListener {
 			}
 			JCheckBox check=new JCheckBox();
 			check.setBackground(c.getBackground());
-			c.add(check,BorderLayout.WEST);
+			c.add(check);
 			JLabel l = new JLabel(i.getNombre() + " - " + i.getArtista());
 			l.setForeground(Color.WHITE);
-			c.add(l, BorderLayout.CENTER);
-			c.setMaximumSize(new Dimension(800, 20));
+			c.add(l);
+			c.setMaximumSize(new Dimension(800, 30));
 			c.addMouseListener(this);
 
 			canciones.add(c);

@@ -23,7 +23,6 @@ import interfaz.componentes.panelReproductor.sliderVolumen.PanelVolumen;
 import interfaz.componentes.pantalla.pantallaReproduccion;
 
 import java.awt.BorderLayout;
-import java.awt.Dialog.ModalExclusionType;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
