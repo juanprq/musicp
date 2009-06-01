@@ -6,6 +6,8 @@ import interfaz.componentes.Brillo;
 import interfaz.componentes.Fondo;
 import interfaz.componentes.ListaReproduccion.ListaReproduccion;
 import interfaz.componentes.albumChooser.AlbumChooser;
+import interfaz.componentes.dialogoDescarga.DialogoDescarga;
+import interfaz.componentes.listaSugeridas.ListaSugeridas;
 import interfaz.componentes.menuPrincipal.FondoFalso2;
 import interfaz.componentes.menuPrincipal.ItemMenuPrincipal;
 import interfaz.componentes.menuPrincipal.MenuPrincipal;
@@ -21,6 +23,7 @@ import interfaz.componentes.panelReproductor.sliderVolumen.PanelVolumen;
 import interfaz.componentes.pantalla.pantallaReproduccion;
 
 import java.awt.BorderLayout;
+import java.awt.Dialog.ModalExclusionType;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
@@ -66,6 +69,7 @@ public class Ventana extends JFrame {
 	private ItemMenuPrincipal botonListaDeReproduccion;
 	private ItemMenuPrincipal botonAlbum;
 	private ItemMenuPrincipal botonSugerir;
+	private ItemMenuPrincipal botonListaSugeridas;
 
 	private pantallaReproduccion pantallaReproduccion;
 	private ListaReproduccion listaReproduccion;
@@ -76,6 +80,7 @@ public class Ventana extends JFrame {
 
 	private JPanel panelActual;
 	private Cancion cancionActual;
+	private ListaSugeridas miListaSugeridas;
 
 	public Ventana() {
 		super("Hamilpod");
@@ -264,14 +269,33 @@ public class Ventana extends JFrame {
 				sugerir();
 			}
 		});
+
+		botonListaSugeridas.addMouseListener(new java.awt.event.MouseAdapter() {
+
+			@Override
+			public void mouseClicked(java.awt.event.MouseEvent evt) {
+				pv.ocultar();
+				mostrarListaDeSugeridas();
+			}
+		});
 	}
 
+	public void descargar() {
+		DialogoDescarga miDialogoDescarga=new DialogoDescarga();
+		miDialogoDescarga.setVisible(true);
+		miDialogoDescarga.animar();
+
+
+	}
 	private void sugerir() {
 		String mensaje="";
 		if(panelActual.equals(pantallaReproduccion)){
 			mensaje="La canción "+cancionActual.getNombre()+" se ha sugerido con éxito";
 		}
 		if(panelActual.equals(listaReproduccion)){
+			mensaje="La canción "+cancionActual.getNombre()+" se ha sugerido con éxito";
+		}
+		if(panelActual.equals(miListaSugeridas)){
 			mensaje="La canción "+cancionActual.getNombre()+" se ha sugerido con éxito";
 		}
 		if(panelActual.equals(cas)){
@@ -298,6 +322,15 @@ public class Ventana extends JFrame {
 			pantalla.remove(panelActual);
 		panelActual = listaReproduccion;
 		pantalla.add(listaReproduccion, BorderLayout.CENTER);
+		panelActual.setVisible(false);
+		panelActual.setVisible(true);
+	}
+
+	private void mostrarListaDeSugeridas() {
+		if (panelActual != null)
+			pantalla.remove(panelActual);
+		panelActual = miListaSugeridas;
+		pantalla.add(miListaSugeridas, BorderLayout.CENTER);
 		panelActual.setVisible(false);
 		panelActual.setVisible(true);
 	}
@@ -460,6 +493,8 @@ public class Ventana extends JFrame {
 		}
 		listaReproduccion.setListaCanciones(z);
 		/* fin prueba */
+		miListaSugeridas=new ListaSugeridas(this);
+		miListaSugeridas.setListaCanciones(z);
 
 		cas = new AlbumChooser();
 
@@ -486,6 +521,11 @@ public class Ventana extends JFrame {
 		menuPrincipal.add(botonSugerir);
 		botonSugerir.setLocation(130, 10);
 		botonSugerir.setToolTipText("Sugerencias");
+
+		botonListaSugeridas = new ItemMenuPrincipal("imagenes/sugerenciasIn.png","imagenes/sugerenciasOut.png");
+		menuPrincipal.add(botonListaSugeridas);
+		botonListaSugeridas.setLocation(170, 10);
+		botonListaSugeridas.setToolTipText("Sugeridas");
 
 	}
 
