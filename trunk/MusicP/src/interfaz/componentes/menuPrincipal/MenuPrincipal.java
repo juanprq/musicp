@@ -20,6 +20,7 @@ public class MenuPrincipal extends JPanel {
 	private static final long serialVersionUID = 1L;
 	private Shape fondo;
 	private boolean visible = true;
+	private boolean animado = false;
 	private Timer temp;
 	private final int velocidad = 1;
 
@@ -39,6 +40,7 @@ public class MenuPrincipal extends JPanel {
 	}
 
 	public void empezarAnimacion() {
+		animado=true;
 		temp.start();
 	}
 
@@ -52,6 +54,7 @@ public class MenuPrincipal extends JPanel {
 		}
 		this.setLocation(x, y);
 		if (y <= -5 || y >= 31) {
+			animado=false;
 			temp.stop();
 			visible = !visible;
 		}
@@ -78,4 +81,9 @@ public class MenuPrincipal extends JPanel {
 		visible=false;
 	}
 
+	public boolean esAnimado() {
+		return animado;
+	}
+
+	
 }
