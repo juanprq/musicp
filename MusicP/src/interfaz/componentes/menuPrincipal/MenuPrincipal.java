@@ -74,5 +74,8 @@ public class MenuPrincipal extends JPanel {
 	public boolean esVisible(){
 		return visible;
 	}
+	public void ocultar(){
+		visible=false;
+	}
 
 }

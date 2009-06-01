@@ -42,7 +42,7 @@ import logica.Cancion;
 public class Ventana extends JFrame {
 
 	/**
-	 *
+	 * 
 	 */
 	private static final long serialVersionUID = 1L;
 	private JPanel fondo;
@@ -120,11 +120,11 @@ public class Ventana extends JFrame {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				if(reproductor.esAnimado())
+				if (reproductor.esAnimado())
 					return;
 				pv.setLocation(botonVolumen.getX() - 8 + reproductor.getX(),
 						botonVolumen.getY() - 78 + reproductor.getY());
-				if(pv.isVisible())
+				if (pv.isVisible())
 					pv.ocultar();
 				else
 					pv.mostrar();
@@ -148,10 +148,9 @@ public class Ventana extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				pv.ocultar();
-				if(!botonPlay.estaReproduciendo()){
+				if (!botonPlay.estaReproduciendo()) {
 					pantallaReproduccion.comenzarCuenta();
-				}
-				else{
+				} else {
 					pantallaReproduccion.pararCuenta();
 				}
 				botonPlay.reproducir();
@@ -215,7 +214,7 @@ public class Ventana extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				pv.ocultar();
-				if(botonPlay.estaReproduciendo()){
+				if (botonPlay.estaReproduciendo()) {
 					botonPlay.reproducir();
 				}
 				pantallaReproduccion.reiniciarCuenta();
@@ -233,7 +232,8 @@ public class Ventana extends JFrame {
 				botonStop.mouseExited();
 			}
 		});
-		botonReproduccionActual.addMouseListener(new java.awt.event.MouseAdapter() {
+		botonReproduccionActual
+				.addMouseListener(new java.awt.event.MouseAdapter() {
 
 					@Override
 					public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -242,7 +242,8 @@ public class Ventana extends JFrame {
 					}
 				});
 
-		botonListaDeReproduccion.addMouseListener(new java.awt.event.MouseAdapter() {
+		botonListaDeReproduccion
+				.addMouseListener(new java.awt.event.MouseAdapter() {
 
 					@Override
 					public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -280,26 +281,29 @@ public class Ventana extends JFrame {
 	}
 
 	public void descargar() {
-		DialogoDescarga miDialogoDescarga=new DialogoDescarga();
+		DialogoDescarga miDialogoDescarga = new DialogoDescarga();
 		miDialogoDescarga.setLocationRelativeTo(this);
 		miDialogoDescarga.setVisible(true);
 		miDialogoDescarga.animar();
 	}
+
 	private void sugerir() {
-		String mensaje="";
-		if(panelActual.equals(pantallaReproduccion)){
-			mensaje="La canción "+cancionActual.getNombre()+" se ha sugerido con éxito";
+		String mensaje = "";
+		if (panelActual.equals(pantallaReproduccion)) {
+			mensaje = "La canción " + cancionActual.getNombre()
+					+ " se ha sugerido con éxito";
 		}
-		if(panelActual.equals(listaReproduccion)){
-			mensaje="La canción "+cancionActual.getNombre()+" se ha sugerido con éxito";
+		if (panelActual.equals(listaReproduccion)) {
+			mensaje = "La canción " + cancionActual.getNombre()
+					+ " se ha sugerido con éxito";
 		}
-		if(panelActual.equals(miListaSugeridas)){
-			mensaje="La canción "+cancionActual.getNombre()+" se ha sugerido con éxito";
+		if (panelActual.equals(miListaSugeridas)) {
+			mensaje = "Las canciones seleccionadas se han sugerido con éxito";
 		}
-		if(panelActual.equals(cas)){
-			mensaje="El álbum Audioslave se ha sugerido con éxito";
+		if (panelActual.equals(cas)) {
+			mensaje = "El álbum Audioslave se ha sugerido con éxito";
 		}
-		if(panelActual.equals(null)){
+		if (panelActual.equals(null)) {
 			System.out.println("null");
 		}
 		JOptionPane.showMessageDialog(this, mensaje);
@@ -318,6 +322,8 @@ public class Ventana extends JFrame {
 	private void mostrarListaDeReproduccion() {
 		if (panelActual != null)
 			pantalla.remove(panelActual);
+		ocultarMenuPrincipal();
+		ocultarMenuReproduccion();
 		panelActual = listaReproduccion;
 		pantalla.add(listaReproduccion, BorderLayout.CENTER);
 		panelActual.setVisible(false);
@@ -327,6 +333,8 @@ public class Ventana extends JFrame {
 	private void mostrarListaDeSugeridas() {
 		if (panelActual != null)
 			pantalla.remove(panelActual);
+		ocultarMenuPrincipal();
+		ocultarMenuReproduccion();
 		panelActual = miListaSugeridas;
 		pantalla.add(miListaSugeridas, BorderLayout.CENTER);
 		panelActual.setVisible(false);
@@ -478,7 +486,7 @@ public class Ventana extends JFrame {
 		c.setUrlAlbum("imagenes/album1.jpg");
 		c.setCalificacion(4);
 		c.setComentarios("Holasad");
-		cancionActual=c;
+		cancionActual = c;
 		/* fin prueba */
 
 		pantallaReproduccion.setCancion(c);
@@ -491,7 +499,7 @@ public class Ventana extends JFrame {
 		}
 		listaReproduccion.setListaCanciones(z);
 		/* fin prueba */
-		miListaSugeridas=new ListaSugeridas(this);
+		miListaSugeridas = new ListaSugeridas(this);
 		miListaSugeridas.setListaCanciones(z);
 
 		cas = new AlbumChooser();
@@ -500,27 +508,32 @@ public class Ventana extends JFrame {
 		menuPrincipal.setBounds(139, 31, 266, 47);
 		lp.add(menuPrincipal, new Integer(2));
 
-		botonReproduccionActual = new ItemMenuPrincipal("imagenes/reproduccion.png","imagenes/reproduccionf.png");
+		botonReproduccionActual = new ItemMenuPrincipal(
+				"imagenes/reproduccion.png", "imagenes/reproduccionf.png");
 		menuPrincipal.add(botonReproduccionActual);
 		botonReproduccionActual.setLocation(10, 10);
 		botonReproduccionActual.setToolTipText("Reproducción Actual");
 
-		botonListaDeReproduccion = new ItemMenuPrincipal("imagenes/lista.png","imagenes/listaf.png");
+		botonListaDeReproduccion = new ItemMenuPrincipal("imagenes/lista.png",
+				"imagenes/listaf.png");
 		menuPrincipal.add(botonListaDeReproduccion);
 		botonListaDeReproduccion.setLocation(50, 10);
 		botonListaDeReproduccion.setToolTipText("Lista de reproducción");
 
-		botonAlbum = new ItemMenuPrincipal("imagenes/album.png","imagenes/albumf.png");
+		botonAlbum = new ItemMenuPrincipal("imagenes/album.png",
+				"imagenes/albumf.png");
 		menuPrincipal.add(botonAlbum);
 		botonAlbum.setLocation(90, 10);
 		botonAlbum.setToolTipText("Seleccionar Album");
 
-		botonSugerir = new ItemMenuPrincipal("imagenes/sugerir.png","imagenes/sugerirf.png");
+		botonSugerir = new ItemMenuPrincipal("imagenes/sugerir.png",
+				"imagenes/sugerirf.png");
 		menuPrincipal.add(botonSugerir);
 		botonSugerir.setLocation(130, 10);
 		botonSugerir.setToolTipText("Sugerir selección");
 
-		botonListaSugeridas = new ItemMenuPrincipal("imagenes/sugerir.png","imagenes/sugerirf.png");
+		botonListaSugeridas = new ItemMenuPrincipal("imagenes/sugerir.png",
+				"imagenes/sugerirf.png");
 		menuPrincipal.add(botonListaSugeridas);
 		botonListaSugeridas.setLocation(170, 10);
 		botonListaSugeridas.setToolTipText("Canciones sugeridas");
@@ -549,5 +562,21 @@ public class Ventana extends JFrame {
 
 	protected void minimizar() {
 		this.setExtendedState(JFrame.ICONIFIED);
+	}
+
+	private void ocultarMenuPrincipal() {
+		if(menuPrincipal.esVisible()){
+			botonMinimizarMenuPrincipal.setTipo(BotonEsconder.BAJAR);
+			menuPrincipal.setLocation(menuPrincipal.getX(), -5);
+			menuPrincipal.ocultar();
+		}
+	}
+
+	private void ocultarMenuReproduccion() {
+		if(reproductor.esVisible()){
+			botonMinimizarPanelReproductor.setTipo(BotonEsconder.SUBIR);
+			reproductor.setLocation(reproductor.getX(), 300);
+			reproductor.ocultar();
+		}
 	}
 }
