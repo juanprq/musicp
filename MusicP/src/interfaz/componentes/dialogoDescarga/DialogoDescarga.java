@@ -35,7 +35,6 @@ public class DialogoDescarga extends JDialog{
 				}
 			}});
 
-		setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
 
 		inicializarComponentes();
 		this.setLocationRelativeTo(null);
