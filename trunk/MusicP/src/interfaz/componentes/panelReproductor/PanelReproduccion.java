@@ -145,4 +145,9 @@ public class PanelReproduccion extends JPanel {
 		return animado;
 	}
 
+	public void ocultar() {
+		visible=false;
+		
+	}
+
 }
