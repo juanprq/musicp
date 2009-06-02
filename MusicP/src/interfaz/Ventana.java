@@ -6,7 +6,8 @@ import interfaz.componentes.Brillo;
 import interfaz.componentes.Fondo;
 import interfaz.componentes.ListaReproduccion.ListaReproduccion;
 import interfaz.componentes.albumChooser.AlbumChooser;
-import interfaz.componentes.dialogoDescarga.DialogoDescarga;
+import interfaz.componentes.dialogos.descarga.DialogoDescarga;
+import interfaz.componentes.dialogos.salir.DialogoSalir;
 import interfaz.componentes.listaSugeridas.ListaSugeridas;
 import interfaz.componentes.menuPrincipal.FondoFalso2;
 import interfaz.componentes.menuPrincipal.ItemMenuPrincipal;
@@ -30,6 +31,7 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionAdapter;
 import java.util.ArrayList;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComponent;
 import javax.swing.JFrame;
@@ -80,6 +82,7 @@ public class Ventana extends JFrame {
 	private JPanel panelActual;
 	private Cancion cancionActual;
 	private ListaSugeridas miListaSugeridas;
+	private DialogoSalir dSalir;
 
 	public Ventana() {
 		super("Hamilpod");
@@ -93,6 +96,7 @@ public class Ventana extends JFrame {
 		ponerArrastrable();
 
 		mostrarAlbum();
+		this.setIconImage(new ImageIcon("imagenes/icon.png").getImage());
 
 	}
 
@@ -381,6 +385,7 @@ public class Ventana extends JFrame {
 	}
 
 	private void iniciarComponentes() {
+		dSalir=new DialogoSalir();
 		JLayeredPane lp = this.getLayeredPane();
 
 		fondo = new Fondo();
@@ -522,8 +527,8 @@ public class Ventana extends JFrame {
 		botonAlbum.setLocation(120, 10);
 		botonAlbum.setToolTipText("Seleccionar Album");
 
-		botonSugerir = new ItemMenuPrincipal("imagenes/sugerir.png",
-				"imagenes/sugerirf.png");
+		botonSugerir = new ItemMenuPrincipal("imagenes/compartir.png",
+				"imagenes/compartirf.png");
 		menuPrincipal.add(botonSugerir);
 		botonSugerir.setLocation(160, 10);
 		botonSugerir.setToolTipText("Sugerir selección");
@@ -548,31 +553,16 @@ public class Ventana extends JFrame {
 	}
 
 	protected void TerminarAplicacion() {
-		int aux = JOptionPane.showConfirmDialog(this,
-				"¿Desea salir de Hamilpod?", "¿Salir?",
-				JOptionPane.YES_NO_OPTION);
-		if (aux == 0) {
-			System.exit(0);
-		}
+//		int aux = JOptionPane.showConfirmDialog(this,
+//				"¿Desea salir de Hamilpod?", "¿Salir?",
+//				JOptionPane.YES_NO_OPTION);
+//		if (aux == 0) {
+//			System.exit(0);
+//		}
+		dSalir.setVisible(true);
 	}
 
 	protected void minimizar() {
 		this.setExtendedState(JFrame.ICONIFIED);
-	}
-
-	private void ocultarMenuPrincipal() {
-		if(menuPrincipal.esVisible()){
-			botonMinimizarMenuPrincipal.setTipo(BotonEsconder.BAJAR);
-			menuPrincipal.setLocation(menuPrincipal.getX(), -5);
-			menuPrincipal.ocultar();
-		}
-	}
-
-	private void ocultarMenuReproduccion() {
-		if(reproductor.esVisible()){
-			botonMinimizarPanelReproductor.setTipo(BotonEsconder.SUBIR);
-			reproductor.setLocation(reproductor.getX(), 300);
-			reproductor.ocultar();
-		}
 	}
 }
