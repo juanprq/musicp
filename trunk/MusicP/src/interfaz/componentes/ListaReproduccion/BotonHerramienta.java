@@ -34,7 +34,7 @@ public class BotonHerramienta extends JButton {
 
 	@Override
 	public void setText(String label) {
-		super.setText("holaa");
+		super.setText("holaaaa");
 		this.label = label;
 		this.repaint();
 	}
